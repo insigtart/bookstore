@@ -1,0 +1,15 @@
+/*field
+{
+	padding: 6px;
+	width: 350px;
+}*/
+
+input, textarea{
+    width:350px;
+}
+
+label
+{
+	width:240px;
+	display:inline-block;
+}
