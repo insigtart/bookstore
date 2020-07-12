@@ -1,0 +1,11 @@
+{% extends "carti/layout.html" %}
+
+{% block body %}
+    <h2>Cărți existente în bookstorePS04 </h2>
+    <ul class="fa-ul">
+        {% for carte in cărți %}
+            <li > <i class="fa-li fa fa-book" style="color:rgba(40, 160, 64, 0.8)"></i>
+                Carte {{ carte.id }}: "<i>{{carte.titlu}}</i>" scrisă de {{carte.autor}}.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

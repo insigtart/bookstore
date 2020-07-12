@@ -20,5 +20,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('bookstore_app.urls')),
+    path('bookstorePS04/', include('bookstorePS04_app.urls')),
     path('admin/', admin.site.urls),
 ]

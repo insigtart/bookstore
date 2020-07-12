@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'bookstore_app',
+    'bookstorePS04_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
