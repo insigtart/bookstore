@@ -6,13 +6,41 @@
     <style>
         h2 {
             
-            outline: 2px dotted rgba(63, 66, 63, 0.8);
+            outline: 2px dotted rgba(64, 64, 64, 0.8);
             color: rgba(40, 160, 64, 0.8);
         }
+
+        h3 {
+            font-style: oblique;
+            color: rgba(64, 64, 64, 1);
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            color:rgba(64, 64, 64, 1);
+            background-color: rgba(40, 160, 64, 0.3);
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        table, th, td {
+            border: 1px solid rgba(64, 64, 64, 0.8);
+        }
+
+        tr:nth-child(even) {background-color: rgba(64, 64, 64, 0.1);}
+
     </style>
     </head>
+
     <body>
         {% block body %}
         {% endblock %}
     </body>
+    
 </html>
