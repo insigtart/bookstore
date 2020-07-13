@@ -4,10 +4,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Cărți existente în baza de date</title>
     <style>
-        h2 {
-            
+
+        h2, h3, ul, table {
+            font-family: "Calibri";
+        }
+
+        h2 {            
             outline: 2px dotted rgba(64, 64, 64, 0.8);
-            color: rgba(40, 160, 64, 0.8);
+            color: rgba(40, 160, 64, 0.8);            
         }
 
         h3 {
@@ -30,7 +34,7 @@
         }
 
         table, th, td {
-            border: 1px solid rgba(64, 64, 64, 0.8);
+            border: 1px solid rgba(64, 64, 64, 0.9);
         }
 
         tr:nth-child(even) {background-color: rgba(64, 64, 64, 0.1);}
@@ -42,5 +46,5 @@
         {% block body %}
         {% endblock %}
     </body>
-    
+
 </html>
