@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block content %}
+<h2>Cărți existente în bookstore </h2>
+<ul class="fa-ul">
+    {% for carte in cărți %}
+    <li> <i class="fa-li fa fa-book" style="color:rgba(40, 160, 64, 0.8)"></i>
+        Carte {{ carte.id }}: "<i>{{carte.titlu}}</i>" scrisă de {{carte.autor}}.</li>
+    {% endfor %}
+</ul>
+
+<h3>Și ceva mai complet, sub formă de tabel (fără posibilitate filtrare...): </h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titlu</th>
+            <th>Autor</th>
+            <th>Anul</th>
+            <th>Țara</th>
+            <th>Subiecte principale</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for carte in cărți %}
+        <tr>
+            <td>{{carte.id}}</td>
+            <td>{{carte.titlu}}</td>
+            <td>{{carte.autor}}</td>
+            <td>{{carte.an}}</td>
+            <td>{{carte.tara}}</td>
+            <td>{{carte.subiect}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
