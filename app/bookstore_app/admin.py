@@ -3,4 +3,4 @@ from .models import Carte
 
 admin.site.register(Carte)
 
-# Register your models here.
+# Register your models here asdasdalolxd.
