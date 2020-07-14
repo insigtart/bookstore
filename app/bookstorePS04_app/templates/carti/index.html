@@ -1,6 +1,10 @@
 {% extends "carti/layout.html" %}
 
+
+
 {% block body %}
+    
+
     <h2>Cărți existente în bookstorePS04 </h2>
     <ul class="fa-ul">
         {% for carte in cărți %}
@@ -10,15 +14,19 @@
     </ul>
 
     <h3>Și ceva mai complet, sub formă de tabel (fără posibilitate filtrare...): </h3>
-    <table class="table table-bordered">
+    <table
+        id="example" 
+        data-filter-control="true"
+        data-show-search-clear-button="true"
+        class="table table-bordered">
         <thead>
           <tr>  
             <th>ID</th>
-            <th>Titlu</th>
-            <th>Autor</th>
-            <th>Anul</th>
-            <th>Țara</th>
-            <th>Subiecte principale</th>
+            <th data-field="titlu" data-filter-control="input"> <i class="fa fa-book"></i>  Titlu</th>
+            <th><i class="fa fa-user-secret"></i>  Autor</th>
+            <th><i class="fa fa-calendar"></i>  Anul</th>
+            <th><i class="fa fa-globe"></i>  Țara</th>
+            <th><i class="fa fa-heartbeat"></i>  Subiecte principale</th>
           </tr>
         </thead>
         
@@ -36,5 +44,14 @@
         </tbody>
       </table>
 
+      
+
+      <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+      </script>
+
+    
 
 {% endblock %}
