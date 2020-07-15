@@ -12,30 +12,28 @@
         <title>Cărți existente în baza de date</title>
         
     <style>
-        h2, h3, ul, table {font-family: "Calibri";}
-        h2 {outline: 2px dotted rgba(64, 64, 64, 0.8); color: rgba(40, 160, 64, 0.8);  }
-        h3 {font-style: oblique; color: rgba(64, 64, 64, 1); }
-        table {border-collapse: collapse; }
-        th {color:rgba(64, 64, 64, 1); background-color: rgba(40, 160, 64, 0.3); }
-
+        h1 {font-family: "Calibri";margin: 25px;color: rgba(40, 160, 64, 0.8)}
+        div {margin: 16px;}
+        table {border-collapse: collapse; margin: 325px;}
+        th {color:rgba(64, 64, 64, 1); background-color: rgba(40, 160, 64, 0.2); }
         th, td {padding: 8px; text-align: left;}
-        table, th, td {border: 1px solid rgba(64, 64, 64, 1);}
+        table, th, td {border: 0.8px solid rgba(64, 64, 64, 0.4);font-family: "Calibri";}
         tr:nth-child(even) {background-color: rgba(64, 64, 64, 0.1);}
     </style>
 
     </head>
 
+    <h1> <i class="fa fa-book fa-spin fa-1x fa-fw"></i> Listare, filtrare și bucurie mare (MARE) </h1>
+
     <body>
+        <div> 
         <table
         id="example"
-        style="width:90%" 
-        data-filter-control="true"
-        data-show-search-clear-button="true"
-        class="table table-bordered">
+        style="width:99%">
         <thead>
           <tr>  
-            <th>ID</th>
-            <th> <i class="fa fa-book"></i>  Titlu</th>
+            <th></th>
+            <th><i class="fa fa-book"></i>  Titlu</th>
             <th><i class="fa fa-user-secret"></i>  Autor</th>
             <th><i class="fa fa-calendar"></i>  An</th>
             <th><i class="fa fa-globe"></i>  Țară</th>
@@ -56,21 +54,19 @@
             {% endfor %}
         </tbody>
       </table>
+      </div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="jquery.dataTables.js"></script>
 
-
     <script>
         $(document).ready(function() {
-         
-
             $('#example thead tr').clone(true).appendTo( '#example thead' );
             $('#example thead tr:eq(1) th').each( function (i) {
                 if (i>0) {
                     var title = $(this).text();
-                    $(this).html( '<input type="text" placeholder="Căutare după -->'+title+'" />' );
+                    $(this).html( '<input type="text" placeholder="'+title+'" />' );
                     $( 'input', this ).on( 'keyup change', function () {
                         if ( table.column(i).search() !== this.value ) {
                             table
@@ -97,30 +93,23 @@
                     null
                 ],
                 "language": {
-                    "search":         "Căutare:",
+                    "search":         "Căutare generală:",
                     "paginate": {
                         "first":      "Prima pagină",
                         "last":       "Ultima pagină",
                         "next":       "Pagina următoare",
                         "previous":   "Pagina anterioară"
                     },
-                    "lengthMenu": "Se afișează _MENU_ înregistrări pe pagină",
-                    "zeroRecords": "Nu s-au găsit înregistrări conform criteriilor",
+                    "lengthMenu": "Se afișează _MENU_ cărți pe pagină",
+                    "zeroRecords": "Ne pare rău (oarecum...), nu s-au găsit cărți conform criteriilor",
                     "info": "Se afișează pagina _PAGE_ din _PAGES_",
-                    "infoEmpty": "Nu există înregistrări",
-                    "infoFiltered": "(rezultate filtrate din _MAX_ înregistrări existente)"
+                    "infoEmpty": "Nu există cărți...",
+                    "infoFiltered": "(rezultate filtrate din _MAX_ cărți existente în baza de date)"
                 }
-
             } );
-        } );
-
-        
+        } );      
     </script>
     
-    
-
-
-
     </body>
 
 </html>
