@@ -17,7 +17,7 @@ def bookslist(request):
     })
 
 
-def book(request, pk):
-    book = Carte.objects.get(id=pk)
+def book(request, pk_test):
+    book = Carte.objects.get(id=pk_test)
     context = {"book": book}
     return render(request, "bookstore_app/book_card.html", context)

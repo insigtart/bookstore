@@ -40,7 +40,7 @@
                     <tbody>
                         {% for carte in cărți %}
                         <tr>
-                            <td><a href="{% url 'book' cărți.id %}">View</a> </td>
+                            <td><a href="{% url 'cărți' cărți.id %}">View</a> </td>
                             <td>{{carte.id}}</td>
                             <td>{{carte.titlu}}</td>
                             <td>{{carte.autor}}</td>
