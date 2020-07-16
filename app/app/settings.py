@@ -57,9 +57,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates"),
-                os.path.join(BASE_DIR, "bookstore_app//templates//bookstore_app"),
-                
-                ],
+                 os.path.join(
+                     BASE_DIR, "bookstore_app//templates//bookstore_app"),
+
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +132,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/mediafiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
+
+
+BROKER_URL = "redis://127.0.0.1:6379/0"
+BROKER_TRANSPORT = "redis"
+
