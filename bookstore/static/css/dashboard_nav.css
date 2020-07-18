@@ -1,0 +1,17 @@
+.tab-info {
+	height: 500px;
+	overflow-y: scroll;
+}
+.img-container {
+	display: inline-block;
+	text-align: center;
+}
+.no-information-data {
+	text-align: center;
+	padding-top: 20px;
+}
+.show-bar-graph-toggle {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
