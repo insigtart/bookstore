@@ -10,30 +10,32 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-<div> 
+
+<div class="row">
 	<table id="table" class="table table-striped table-sm">
 		<thead>
-			<tr>  
-				<th>#</th>
+			<tr>
+				<th></th>
 				<th><i></i>Title</th>
 				<th><i></i>Author</th>
 				<th><i></i>Year</th>
 				<th><i></i>Country</th>
 				<th><i></i>Languages</th>
 				<th><i></i>Topics</th>
+
 			</tr>
 		</thead>
 
 		<tbody>
 			{% for book in books %}
 			<tr>
-				<td>{{ forloop.counter0 }}</td>
-				<td>{{ book.title }}</td>
-				<td>{{ book.author }}</td>
-				<td>{{ book.datetime }}</td>
-				<td>{{ book.country.first.name }}</td>
-				<td>{{ book.languages.first.name }}</td>
-				<td>{{ book.topics.first.name }}</td>
+				<td><a class="btn btn-sm btn-info" href="{% url 'book' book.id %}">View</a></td>
+				<td style="text-align: center;">{{ book.title }}</td>
+				<td style="text-align: center;">{{ book.author }}</td>
+				<td style="text-align: center;">{{ book.datetime }}</td>
+				<td style="text-align: center;">{{ book.country.first.name }}</td>
+				<td style="text-align: center;">{{ book.languages.first.name }}</td>
+				<td style="text-align: center;">{{ book.topics.first.name }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -41,45 +43,45 @@
 </div>
 
 <script>
-	$(document).ready(function() {
-		$('#table thead tr').clone(true).appendTo( '#table thead' );
-		$('#table thead tr:eq(1) th').each( function (i) {
-			if (i>0) {
+	$(document).ready(function () {
+		$('#table thead tr').clone(true).appendTo('#table thead');
+		$('#table thead tr:eq(1) th').each(function (i) {
+			if (i > 0) {
 				var title = $(this).text();
-				$(this).html( '<input type="text" placeholder="'+title+'" />' );
-				$( 'input', this ).on( 'keyup change', function () {
-					if ( table.column(i).search() !== this.value ) {
+				$(this).html('<input type="text" placeholder="' + title + '" />');
+				$('input', this).on('keyup change', function () {
+					if (table.column(i).search() !== this.value) {
 						table
-						.column(i)
-						.search( this.value )
-						.draw();
+							.column(i)
+							.search(this.value)
+							.draw();
 					}
-				} );
+				});
 			}
-		} );
+		});
 
-		var table = $('#table').DataTable( {
+		var table = $('#table').DataTable({
 			orderCellsTop: true,
 			fixedHeader: true,
 			"paging": true,
 			"ordering": false,
-			"info":     true,
+			"info": true,
 			"columns": [
-			{ "searchable": false },
-			null,
-			null,
-			null,
-			null,
-			null,
-			null
+				{ "searchable": false },
+				null,
+				null,
+				null,
+				null,
+				null,
+				null
 			],
 			"language": {
-				"search":         "Căutare generală:",
+				"search": "Căutare generală:",
 				"paginate": {
-					"first":      "Prima pagină",
-					"last":       "Ultima pagină",
-					"next":       "Pagina următoare",
-					"previous":   "Pagina anterioară"
+					"first": "Prima pagină",
+					"last": "Ultima pagină",
+					"next": "Pagina următoare",
+					"previous": "Pagina anterioară"
 				},
 				"lengthMenu": "Se afișează _MENU_ cărți pe pagină",
 				"zeroRecords": "Ne pare rău (oarecum...), nu s-au găsit cărți conform criteriilor",
@@ -87,7 +89,7 @@
 				"infoEmpty": "Nu există cărți...",
 				"infoFiltered": "(rezultate filtrate din _MAX_ cărți existente în baza de date)"
 			}
-		} );
-	} );      
+		});
+	});      
 </script>
 {% endblock content %}
