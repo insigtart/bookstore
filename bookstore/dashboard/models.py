@@ -23,7 +23,7 @@ class Language(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=64)
-    description = models.TextField(blank=False)
+    description = models.TextField(blank=True)
     datetime = models.DateField()
     country = models.ManyToManyField(Country)
     languages = models.ManyToManyField(Language)
