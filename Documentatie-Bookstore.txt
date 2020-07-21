@@ -1,0 +1,102 @@
+﻿
+Astazi am mai povestit cu Steluta legat de aplicatie si cred ca am mai ajuns la niste concluzii legate de ce mai este nevoie sa integram la ce avem deja
+
+1. Este nevoie de inca o modala (poate) pentru a lasa utilizatorul sa adauge propriile categorii de carti.
+
+2. Implementare multiselect pentru a alege mai mult de o optiune (spre ex in cazul limbii). In functie de nationalitatea cartii, ea poate spune povestea in 2, 3 limbi straine poate.
+
+3. Este nevoie sa adaugam un script de instantiere a bazei de date care sa se aplice pentru tara si limba. 
+
+4. Treaba cu paginarea, care s-ar putea face in Django fiindca este mult mai scalabil. Am povestit cu Stelut in seara asta. (aici nu e graba)
+
+5. Dupa cum a inrebat si Cata, partea de inregistrare a utilizatorilor. Trebuie sa il intrebam ce ne sugereaza, banuiesc ca de asta a intrebat. Django are ceva predefinit cu ceva functii hash implementate.
+
+6. A mai zis Stelut in observatii de partea cu baza de date. Daca este suficient sa folosim SQLite, cred ca trebuie sa ne mai documentam si aici. Partea buna este ca Django are Wrapper* peste mai multe baze de date si pot fi adaugate din Settings in aplicatie.
+
+7. Ar trebui sa facem si butonul de View pentru a putea sa ne ocupam apoi si de pagina de profil a utilizatorului.
+
+Cz: 20.07.2020
+----------------------------------------------------------------------------------------------------
+
+
++ daca nu e ok template-ul, sa facem modificarile necesare
+
++ Are intr-adevar niste probleme la partea de “responsive” de care a zis Denis ca se ocupa el ca stie unde ar putea fi problemele si o sa incerce sa le rezolve.
+
++ sa avem in vedere daca aplicatia trebuie sa fie in romana sau in engleza
+
+
+
+
+
+
+
+
+
+
+Hello, noi am finalizat ce am discutat ultima oara la telefon, fiind necesare cateva modificari la implementarile mele si ale Stelutei dupa recomandarile lui Denis. Pe langa aceste modificari am creat un nou proiect fiindca am folosit un alt template de bootstrap si ar fi fost conflictul prea mare sa facem merge si am zis ca totusi e mai bine sa nu modificam peste ce am lucrat noi deja. 
+
+Daca nu vi se pare ok template-ul, sau ca ar avea nevoie de alte update-uri, discutam si vedem cu rezolvam. 
+
+
+    • Integrari:
+
+	Pe (+) apare posibilitatea de a adauga o carte in baza de date
+
+Baza de date:
+	Asa cum am discutat cu Steluta ultima oara, am facut clase diferite pentru Tara, Limba, categorii (topic), noi gandindu-ne la faptul ca relatiile dintre carte si aceste categorii sa fie ManyToMany si la ideea ca poate utilizatorii, la un moment dat vor dori sa isi adauge propriile categorii (topic) de carti. 
+
+
+In modal, cel in care se adauga cartile, la campurile de Country si Language sunt facute cu posibilitate de autocomplete (autocomplete din baza de date), respectiv poate fiecare sa adauge un element fara sa se foloseasca de autocomplete (cu optiunea ca in spate sa se faca o verificare daca ceea ce a adaugat utilizatorul in campul respectiv sa faca parte din baza de date - adica sa fie valid- asta e ceva ce trebuie sa mai  adaugam, aceasta conditie)
+
+La tabelul cu date va trebui sa adaptam functionalitatea cu Django pagination. In cazul in care va fi vorba de o baza de date foarte mare, client side-ul nu va mai face fata la fel de bine. Doc: https://docs.djangoproject.com/en/3.0/topics/pagination/ 
+
+
+"context-processors.py" – reprezinta o rutina care se apeleaza de fiecare data cand este accesata pagina web de django. Aici se adauga datele din baza de date de care avem nevoie tot timpul indiferent de view. Ca sa nu se faca return pe fiecare view in parte si sa  se creeze o oarecare redundanta se scrie totul o sg data in context processors si el se ocupa de asta.
+
+
+    • Integrarea cu Celery se poate observa astfel:
+	
+tasks.py - un task in celery care trimite o notificare sub forma unui print "Send Notification HEEEREEE" la o perioada de timp pe care o definim noi. Se poate face reconfigurarea si crearea unor taskuri din localhost:8000/admin in sectiune Tasks
+
+celery.py - modul in care se introduce serviciul de celery intr-un proiect de Django (standard)
+
+in settings.py la INSTALLED_APPS este necesar sa specificam 'django_celery_beat' si CELERY_BROKER_URL = 'redis://localhost:6379/0' care mentioneaza portul pe care lucreaza serviciul de Redis (6379), respectiv indexul pipeline-ului pe care se lucreaza (0).
+
+De asemenea, in templates se regasesc celerybeat-schedule.bak, celerybeat-schedule.dat, celerybeat-schedule.dir care sunt utile serviciului de celery beat. Se creaza automat de catre django.
+
+
+
+    • Instalare Celery se face astfel: (pentru Linux)
+
+sudo apt install redis
+pip install django_celery_beat
+
+
+
+    • Cum se verifica serviciul/ cum se porneste Scheduler-ul:
+ 
+1. Se porneste workerul care preia sarcinile de la serviciul de scheduler
+
+$ celery -A [project-name] worker –loglevel=info 
+$ celery -A bookstore worker --loglevel=info
+
+1. Se porneste serviciul de scheduler
+
+$ celery -A [project-name] beat -l info -S django
+$ celery -A bookstore beat -l info -S django
+
+Documentatie:
+https://django-celery-beat.readthedocs.io/en/latest/
+https://docs.celeryproject.org/en/stable/userguide/periodic-tasks.html
+
+
+    • Necesar de adaugat mai departe din punctul meu de vedere:
+	-> conditie de verificare a campurilor introduse in modala de add book
+	-> formatare la campul de Datetime (aici pot sa ma ocup eu)
+	→ adaptarea tabelului cu Django pagination
+	-> la partea de afisare a cartilor, un [view] sau posibilitatea de a da click pe carte pentru a merge pe pagina de profil a cartii
+	-> si apoi ce zicea Adi, pagina de profil a fiecarei carti in parte (nu stiu exact cum a gandit-o el sa fie aici) - din ce am discutat eu cu Stelut saptamana asta, ne gandeam ca partea de adaugare a unei poze sa se faca aici. Deci ca sugestie, un buton de adaugare poza. 
+
+
+
