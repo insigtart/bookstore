@@ -1,13 +1,13 @@
 version: "3"
 
 services: 
-    app:
+    web:
         build: 
             context: .
         ports: 
             - "8000:8000"
         volumes: 
-            - ./app:/app
+            - ./bookstore:/bookstore
         command: >
             sh -c "python manage.py runserver 0.0.0.0:8000"
         depends_on: 
@@ -16,10 +16,23 @@ services:
     redis:
         image: "redis:alpine"
 
-    #celery_worker:
-    #    <<: *python
-    #    command: celery -A tickets worker --loglevel=info
-    #    ports: []
-    #    depends_on:
-    #        - rabbitmq
-    #        - postgres
+    celery:
+        build: .
+        command: >
+            sh -c  "celery -A bookstore worker --loglevel=info"
+        volumes: 
+            - ./bookstore:/bookstore
+        depends_on: 
+            - redis
+
+    celery-beat:
+        build: .
+        command: >
+            sh -c  "celery -A bookstore beat -l info -S django"
+        volumes: 
+            - ./bookstore:/bookstore
+        depends_on: 
+            - redis
+
+
+
