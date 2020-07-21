@@ -133,16 +133,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Celery configurations
 #CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
-CELERY_BROKER_URL = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'redis://redis:6379'
-CELERY_ACCEPT_CONTENT = ['bookstore/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+#CELERY_ACCEPT_CONTENT = ['applications/json']
+#CELERY_TASK_SERIALIZER = 'json'
+#CELERY_RESULT_SERIALIZER = 'json'
 
 
 CELERY_BEAT_SCHEDULE = {
     'send_notification': {
-        'task': 'app.tasks.send_notification',
+        'task': 'dashboard.tasks.send_notification',
         'schedule': crontab()  # execute every minute
     }
 }
