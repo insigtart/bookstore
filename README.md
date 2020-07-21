@@ -1,3 +1,15 @@
+# How to create a new branch
+1. git branch "name_of_branch" (from your Django env)
+
+- comenzi aditionale: git branch --list
+					  git status
+					  git branch
+2. git checkout "name_of_branch" (to switch from the master branch to yours)
+3. git add .
+4. git commit -m "Add my branch"
+5. git push --- git push --set-upstream origin "name_of_branch"
+
+
 # bookstore
 Create a simple bookstore for training 
 
@@ -26,5 +38,3 @@ Currently the application is composed of 3 services:
 From now on everyone will have to work this way.
 
 
-# Good luck!
-# Fave fun!
