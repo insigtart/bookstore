@@ -13,7 +13,10 @@ Astazi am mai povestit cu Steluta legat de aplicatie si cred ca am mai ajuns la 
 
 6. A mai zis Stelut in observatii de partea cu baza de date. Daca este suficient sa folosim SQLite, cred ca trebuie sa ne mai documentam si aici. Partea buna este ca Django are Wrapper* peste mai multe baze de date si pot fi adaugate din Settings in aplicatie.
 
-7. Ar trebui sa facem si butonul de View pentru a putea sa ne ocupam apoi si de pagina de profil a utilizatorului.
+7. Butonul de View - REZOLVAT
+
+8. Daca ad o carte de 2 ori, sa le zicem ca exista deja cartea si apoi decidem cu ei cum sa facem
+
 
 Cz: 20.07.2020
 ----------------------------------------------------------------------------------------------------

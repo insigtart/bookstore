@@ -16,6 +16,8 @@
   <link href="{% static 'css/button-view.css' %}" rel="stylesheet">
   <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
   <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet" media="screen"> 
+
 
   <!-- JS core -->
   <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
@@ -157,7 +159,7 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="input-datetime">Datetime</label>
-                <input type="text" class="form-control" id="input-datetime" name="input-datetime" placeholder="Datetime"
+                <input type="text" class="form-control" id="input-datetime" data-date-format="dd MM yyyy HH:ii" name="input-datetime" placeholder="Datetime"
                   required>
               </div>
               <div class="form-group col-md-6">
@@ -218,6 +220,21 @@
   autocomplete(document.getElementById('search-book'), books);
   autocomplete(document.getElementById('input-language'), languages);
   autocomplete(document.getElementById('input-country'), countries);
+</script>
+
+<script src="{% static '/js/script.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/bootstrap-datetimepicker.js' %}" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 0,
+        forceParse: 0,
+        pickerPosition: 'bottom-left'
+    });
 </script>
 
 </html>
