@@ -1,19 +1,17 @@
-# How to create a new branch
+# Steps to create new branches
 1. git branch "name_of_branch" (from your Django env)
 
-- comenzi aditionale: git branch --list
-					  git status
-					  git branch
+- git branch --list
+- git status
+- git branch
+
 2. git checkout "name_of_branch" (to switch from the master branch to yours)
 3. git add .
 4. git commit -m "Add my branch"
 5. git push --- git push --set-upstream origin "name_of_branch"
 
 
-# bookstore
-Create a simple bookstore for training 
-
-# Steps for run 
+# Steps for run app
 1. Install docker
 
 2. Optional: clean all containers and images for a fresh start:
