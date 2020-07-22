@@ -15,10 +15,12 @@ def dashboard(request):
     context = {}
 
     if request.method == 'POST':
+        print(request.POST)
         book = Book.objects.create(title=request.POST['input-title'],
                                    author=request.POST['input-author'],
                                    description=request.POST['input-description'],
                                    datetime=datetime.strptime(request.POST['input-datetime'], '%d.%m.%Y').date())
+        print(request.POST)
         book.country.add(Country.objects.get(
             name=request.POST['input-country']))
         book.languages.add(Language.objects.get(
