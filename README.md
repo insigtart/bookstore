@@ -1,3 +1,8 @@
+
+# Django Fixtures
+https://code.djangoproject.com/wiki/Fixtures?fbclid=IwAR1vfbwGtvciqs68v_U3VOcMl0m3UfiOv9M4i4fjrMcv9qkzomAKhvEQGbs
+
+
 # Steps to create new branches
 1. git branch "name_of_branch" (from your Django env)
 
