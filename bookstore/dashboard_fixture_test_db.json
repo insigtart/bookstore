@@ -1,0 +1,624 @@
+[
+{
+    "model": "dashboard.country",
+    "pk": 1,
+    "fields": {
+        "name": "Rom\u00e2nia"
+    }
+},
+{
+    "model": "dashboard.country",
+    "pk": 2,
+    "fields": {
+        "name": "Anglia"
+    }
+},
+{
+    "model": "dashboard.country",
+    "pk": 3,
+    "fields": {
+        "name": "Rusia"
+    }
+},
+{
+    "model": "dashboard.country",
+    "pk": 4,
+    "fields": {
+        "name": "Brazilia"
+    }
+},
+{
+    "model": "dashboard.country",
+    "pk": 5,
+    "fields": {
+        "name": "SUA"
+    }
+},
+{
+    "model": "dashboard.country",
+    "pk": 6,
+    "fields": {
+        "name": "Fran\u021ba"
+    }
+},
+{
+    "model": "dashboard.language",
+    "pk": 1,
+    "fields": {
+        "name": "rom\u00e2n\u0103"
+    }
+},
+{
+    "model": "dashboard.language",
+    "pk": 2,
+    "fields": {
+        "name": "francez\u0103"
+    }
+},
+{
+    "model": "dashboard.language",
+    "pk": 3,
+    "fields": {
+        "name": "rus\u0103"
+    }
+},
+{
+    "model": "dashboard.language",
+    "pk": 4,
+    "fields": {
+        "name": "englez\u0103"
+    }
+},
+{
+    "model": "dashboard.language",
+    "pk": 5,
+    "fields": {
+        "name": "portughez\u0103"
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 1,
+    "fields": {
+        "name": "dragoste",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 2,
+    "fields": {
+        "name": "timp",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 3,
+    "fields": {
+        "name": "societate",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 4,
+    "fields": {
+        "name": "familie",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 5,
+    "fields": {
+        "name": "moravuri",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 6,
+    "fields": {
+        "name": "mister",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 7,
+    "fields": {
+        "name": "r\u0103zboi",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 8,
+    "fields": {
+        "name": "via\u021b\u0103",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 9,
+    "fields": {
+        "name": "psihologie",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 10,
+    "fields": {
+        "name": "fantezie",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 11,
+    "fields": {
+        "name": "politic\u0103",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 12,
+    "fields": {
+        "name": "dram\u0103",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 13,
+    "fields": {
+        "name": "holocaust",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.topic",
+    "pk": 14,
+    "fields": {
+        "name": "aventuri",
+        "description": ""
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 1,
+    "fields": {
+        "title": "Adam \u0219i Eva",
+        "author": "Liviu Rebreanu",
+        "description": "\"Un b\u0103rbat din milioanele de b\u0103rba\u021bi dore\u0219te pe o singur\u0103 femeie din milioanele de femei.\"",
+        "datetime": "1925-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 2,
+    "fields": {
+        "title": "M\u00e2ndrie \u0219i prejudecat\u0103",
+        "author": "Jane Austen",
+        "description": "\"G\u00e2nde\u015fte-te la trecut numai \u00een m\u0103sura \u00een care amintirea lui \u00ee\u0163i aduce bucurie.\"",
+        "datetime": "1813-01-01",
+        "country": [
+            2
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            1,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 3,
+    "fields": {
+        "title": "Cel mai iubit dintre p\u0103m\u00e2nteni",
+        "author": "Marin Preda",
+        "description": "\"Privirea ei nu-\u021bi mai apar\u021bine, sur\u00e2sul ei nu-i mai \u00eenflore\u0219te pe chip c\u00e2nd o prive\u0219ti, r\u00e2de pe nea\u0219teptate de ceea ce spune altul \u0219i e\u0219ti stupefiat s\u0103 descoperi c\u0103, de\u0219i e aceea\u0219i, nu-\u021bi mai apar\u021bine.\"",
+        "datetime": "1980-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            3,
+            5,
+            11
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 4,
+    "fields": {
+        "title": "Ultima noapte de dragoste, \u00eent\u00e2ia noapte de r\u0103zboi",
+        "author": "Camil Petrescu",
+        "description": "\u201c\u201eSe pot desp\u0103r\u021bi a\u015fa u\u0219or doi aman\u021bi? Un bandaj aplicat prea multe zile pe o ran\u0103 \u0219i se lipe\u0219te pe ea de nu-l po\u021bi desface dec\u00e2t cu suferin\u021be de ne\u00eendurat\u2026 dar dou\u0103 suflete care s-au \u00eempletit\u2026 au crescut apoi laolat\u0103?\u201d",
+        "datetime": "1930-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            1,
+            7
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 5,
+    "fields": {
+        "title": "Maitreyi",
+        "author": "Mircea Eliade",
+        "description": "\"Atunci am \u00een\u021beles c\u0103 nimic nu dureaz\u0103 \u00een suflet, c\u0103 cea mai verificat\u0103 \u00eencredere poate fi anulat\u0103 de un singur gest, c\u0103 cele mai sincere posesiuni nu dovedesc niciodat\u0103 nimic, c\u0103ci \u0219i sinceritatea poate fi repetat\u0103, cu altul, cu al\u021bii, c\u0103, \u00een sf\u00e2r\u0219it, totul se uit\u0103 sau se poate uita, c\u0103ci fericirea \u0219i \u00eencrederea adunat\u0103 \u00een at\u00e2tea luni de dragoste, \u00een at\u00e2tea nop\u021bi petrecute \u00eempreun\u0103, pieriser\u0103 acum ca prin miracol, \u0219i nu supravie\u021buiser\u0103 \u00een mine dec\u00e2t un \u00eent\u0103r\u00e2tat orgoliu \u0219i o cumplit\u0103 furie \u00eempotriva mea \u00eensumi.\"",
+        "datetime": "1933-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            1
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 6,
+    "fields": {
+        "title": "Crim\u0103 \u0219i pedeaps\u0103",
+        "author": "Fiodor Dostoievski",
+        "description": "\"Se \u00eent\u00e2mpl\u0103 uneori \u00een via\u021b\u0103 s\u0103 \u00eent\u00e2lne\u0219ti oameni cu des\u0103v\u00e2r\u0219ire necunoscu\u021bi care te intereseaz\u0103 nitam-nisam de la prima vedere, mai \u00eenainte chiar de a fi schimbat o vorb\u0103 cu ei.\"",
+        "datetime": "1866-01-01",
+        "country": [
+            3
+        ],
+        "languages": [
+            3
+        ],
+        "topics": [
+            12
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 7,
+    "fields": {
+        "title": "Anna Karenina",
+        "author": "Lev Tolstoi",
+        "description": "\"Iubire. Motivul pentru care nu \u00eemi place acest cuv\u00e2nt este c\u0103 el \u00eenseamn\u0103 a\u0219a de mult pentru mine, cu mult mai mult dec\u00e2t tu po\u021bi \u00een\u021belege.\"",
+        "datetime": "1877-01-01",
+        "country": [
+            3
+        ],
+        "languages": [
+            3
+        ],
+        "topics": [
+            1,
+            4,
+            12
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 8,
+    "fields": {
+        "title": "Eugenie Grandet",
+        "author": "Honore De Balzac",
+        "description": "\"Lingu\u0219eala nu vine niciodat\u0103 din sufletele mari. Ea este apanajul spiritelor m\u0103runte, care izbutesc s\u0103 se fac\u0103 \u0219i mai mici \u00eenc\u0103 pentru a intra \u00een sfera vital\u0103 a persoanei \u00een jurul c\u0103reia graviteaz\u0103. Lingu\u0219eala presupune un interes.\"",
+        "datetime": "1833-01-01",
+        "country": [
+            6
+        ],
+        "languages": [
+            2
+        ],
+        "topics": [
+            3,
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 9,
+    "fields": {
+        "title": "R\u0103zboi \u0219i pace",
+        "author": "Lev Tolstoi",
+        "description": "\"Iubirea? Ce-i iubirea? Iubirea st\u0103 \u00een calea mor\u021bii. Iubirea este via\u021ba. Tot, tot ce \u00een\u021beleg, \u00een\u021beleg numai pentru c\u0103 iubesc. Tot ce exist\u0103, exist\u0103 pentru c\u0103 iubesc. Totul e legat numai de iubire. Iubirea este Dumnezeu \u0219i, c\u00e2nd mori, \u00eenseamn\u0103 c\u0103 tu, o p\u0103rticic\u0103 din iubire, te \u00eentorci la izvorul ve\u0219nic al tuturor lucrurilor.\"",
+        "datetime": "1865-01-01",
+        "country": [
+            3
+        ],
+        "languages": [
+            3
+        ],
+        "topics": [
+            7
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 10,
+    "fields": {
+        "title": "Lista lui Schindler",
+        "author": "Thomas Keneally",
+        "description": "\u201cCine salveaz\u0103 o via\u021b\u0103, salveaz\u0103 lumea \u00eentreag\u0103.\u201d",
+        "datetime": "1982-01-01",
+        "country": [
+            2
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            13
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 11,
+    "fields": {
+        "title": "Ro\u0219u \u0219i negru",
+        "author": "Stendhal",
+        "description": "\"Iubirea creeaz\u0103 egalit\u0103\u0163i \u015fi nu le caut\u0103.\"",
+        "datetime": "1830-01-01",
+        "country": [
+            6
+        ],
+        "languages": [
+            2
+        ],
+        "topics": [
+            1,
+            9
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 12,
+    "fields": {
+        "title": "Fantoma de la oper\u0103",
+        "author": "Gaston Leroux",
+        "description": "\"Era preocupat numai de a o vedea pe aceea a c\u0103rei voce fermecat\u0103 \u00eei furase inima. Da, sim\u021bea c\u0103 biata lui inim\u0103 neprih\u0103nit\u0103 nu-i mai apar\u021binea... Sim\u021bise \u00een fa\u021ba ei o dulce emo\u021bie... Pieptul \u00eel durea, ca \u0219i cum i-ar fi fost deschis pentru a i se smulge inima. Sim\u021bea acolo un gol \u00eengrozitor, un pustiu adev\u0103rat care nu ar putea fi niciodat\u0103 umplut dec\u00e2t cu inima celuilalt. Sunt, toate acestea, \u00eent\u00e2mpl\u0103ri de o psihologie aparte care, se pare, nu pot fi \u00een\u021belese dec\u00e2t de cei care au fost \u00een dragoste de acest straniu fenomen numit \u00een limbajul curent dragoste la prima vedere.\"",
+        "datetime": "1910-01-01",
+        "country": [
+            6
+        ],
+        "languages": [
+            2
+        ],
+        "topics": [
+            6
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 13,
+    "fields": {
+        "title": "Marile speran\u021be",
+        "author": "Charles Dickens",
+        "description": "\"Via\u021ba este o serie continu\u0103 de desp\u0103r\u021biri.\"",
+        "datetime": "1860-01-01",
+        "country": [
+            2
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            1
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 14,
+    "fields": {
+        "title": "Jane Eyre",
+        "author": "Charlotte Bronte",
+        "description": "\u201eTeme-te de remu\u0219c\u0103ri c\u00e2nd e\u0219ti tentat\u0103 s\u0103 te aba\u021bi de la drumul drept... remu\u0219c\u0103rile sunt otrava vie\u021bii.\u201d",
+        "datetime": "1847-01-01",
+        "country": [
+            2
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 15,
+    "fields": {
+        "title": "Alchimistul",
+        "author": "Paulo Coelho",
+        "description": "\"Fiecare clip\u0103 de c\u0103utare este o clip\u0103 de reg\u0103sire.\"",
+        "datetime": "1988-01-01",
+        "country": [
+            4
+        ],
+        "languages": [
+            5
+        ],
+        "topics": [
+            10,
+            14
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 16,
+    "fields": {
+        "title": "Micul Prin\u021b",
+        "author": "Antoine de Saint-Exupery",
+        "description": "\"Limpede nu vezi dec\u00e2t cu inima. Miezul lucrurilor nu poate fi v\u0103zut cu ochii.\"",
+        "datetime": "1943-01-01",
+        "country": [
+            6
+        ],
+        "languages": [
+            2
+        ],
+        "topics": [
+            8,
+            10
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 17,
+    "fields": {
+        "title": "Patul lui Procust",
+        "author": "Camil Petrescu",
+        "description": "\u201c- Nu crezi dumneata \u00een iubire? Nu te atrage iubirea?...\r\n- Ba da, m\u0103 atrage... Poate c\u0103 e singurul rost al unei vie\u021bi m\u0103rginite, comune, cum e via\u021ba noastr\u0103. \u0218i-mi place... dar \u0219tiu c\u0103 nu dureaz\u0103... c\u0103 nu corespunde unei realit\u0103\u021bi... \u00cemi place mult s\u0103 privesc o noapte cu lun\u0103... \u0219i uneori stau vreme \u00eendelungat\u0103 la fereastra mea, privind, dar \u0219tiu bine c\u0103 luna e altceva dec\u00e2t ceea ce pare... Nu \u00eentind m\u00e2na s-o prind... E mult \u0219i ceea ce d\u0103, f\u0103r\u0103 inten\u021bie \u015fi sfor\u021bare.\u201d",
+        "datetime": "1933-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 18,
+    "fields": {
+        "title": "D\u0103ruind vei dob\u00e2ndi",
+        "author": "Nicolae Steinhardt",
+        "description": "\"Vrem s\u0103 fim ierta\u021bi dar nu suntem dispu\u0219i s\u0103 iert\u0103m \u0219i noi. Vrem s\u0103 ni se acorde aten\u021bie \u0219i s\u0103 ne fie luate \u00een seam\u0103 toate drepturile, dorin\u021bele, de nu \u0219i capriciile, lu\u0103m \u00eens\u0103 foarte gr\u0103bit \u0219i \u00eempr\u0103\u0219tiat aminte la nevoile, dolean\u021bele \u0219i solicit\u0103rile celorlal\u021bi. Ceilal\u021bi! Ei ne apar undeva, departe, un soi de fantome pierdute \u00een cea\u021b\u0103. Ni se pare de fapt, c\u0103 to\u021bi cei din jurul nostru au obliga\u021bii fa\u021b\u0103 de noi, iar noi fa\u021b\u0103 de nimeni, niciodat\u0103. Toate ni se cuvin, tot ce facem e bun \u0219i \u00eendrept\u0103\u021bit, numai noi avem \u00eentotdeauna dreptate.\"",
+        "datetime": "1992-01-01",
+        "country": [
+            1
+        ],
+        "languages": [
+            1
+        ],
+        "topics": [
+            8
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 19,
+    "fields": {
+        "title": "Femeia la 30 de ani",
+        "author": "Honore De Balzac",
+        "description": "\"Numai la treizeci de ani o femeie e \u00een stare s\u0103 cunoasc\u0103 resursele unei atari situa\u021bii. Ea \u0219tie, la aceast\u0103 v\u00e2rst\u0103, s\u0103 r\u00e2d\u0103, s\u0103 glumeasc\u0103, s\u0103 cocheteze, f\u0103r\u0103 s\u0103 se compromit\u0103. Ea are atunci tactul necesar pentru a ataca toate coardele sensibile ale unui b\u0103rbat \u0219i pentru a studia ce sunete poate s\u0103 scoat\u0103 din ele. T\u0103cerea ei este tot at\u00e2t de prijmejdioas\u0103 ca \u0219i cuv\u00e2ntul.\"",
+        "datetime": "1842-01-01",
+        "country": [
+            6
+        ],
+        "languages": [
+            2
+        ],
+        "topics": [
+            5
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 20,
+    "fields": {
+        "title": "\u00cen c\u0103utarea fericirii",
+        "author": "Bertrand Russell",
+        "description": "\"Cel mai important lucru ce se poate spune despre trenul spre libertate e c\u0103 va urca mun\u021bii. \u0218tii, fiecare din noi are mun\u021bi de urcat. Mun\u021bi care se \u00eenal\u021b\u0103 p\u00e2n\u0103 la cer, \u0219i mun\u021bi care coboar\u0103 tot mai jos.\"",
+        "datetime": "1930-01-01",
+        "country": [
+            2
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            8
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 21,
+    "fields": {
+        "title": "Marele Gatsby",
+        "author": "F.S. Fitzgerall",
+        "description": "\"Oric\u00e2t de intens\u0103 ar fi vibra\u021bia sau prospe\u021bimea realit\u0103\u021bii, ea nu se poate m\u0103sura cu ce este \u00een stare un om s\u0103 \u00eenchid\u0103 \u00een ad\u00e2ncul sufletului s\u0103u.\"",
+        "datetime": "1925-01-01",
+        "country": [
+            5
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            1
+        ]
+    }
+},
+{
+    "model": "dashboard.book",
+    "pk": 22,
+    "fields": {
+        "title": "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
+        "author": "Ashley Vance",
+        "description": "\"One of the really tough things is figuring out what questions to ask. Once you figure out the question, then the answer is relatively easy.\"",
+        "datetime": "2015-01-01",
+        "country": [
+            5
+        ],
+        "languages": [
+            4
+        ],
+        "topics": [
+            8
+        ]
+    }
+}
+]
