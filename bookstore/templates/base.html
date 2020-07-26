@@ -26,10 +26,14 @@
 </head>
 
 <body>
+        
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/pagina_hello" style="color: rgb(42, 212, 51)">
+      {% block topbar-image-text %}  
       <img src="{% static 'bookstore_icon.png' %}" width="25" height="25">
-      Bookstore
+      BOOKSTORE
+      {% endblock topbar-image-text %}
+      
     </a>
     <form id="search-book-form" class="w-100">
       <input id="search-book" name="search-book" class="form-control form-control-dark" type="text" placeholder="Search"
@@ -41,6 +45,8 @@
       </li>
     </ul>
   </nav>
+  
+
 
   <div class="container-fluid">
     <div class="row">
@@ -53,11 +59,11 @@
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a id="dashboard-nav-link" class="nav-link" href="/" style="float: left">
-                <span data-feather="book"></span>
-                Books
+          <ul class="nav flex-column" >
+            <li class="nav-item" >
+              <a id="dashboard-nav-link" class="nav-link" href="/listare_carti"  style="color: rgb(67, 197, 49)">
+                <span data-feather="book" style="color: rgb(67, 197, 49)" ></span>
+                Listare cărți
               </a>
             </li>
             <li class="nav-item">

@@ -21,10 +21,10 @@ class Language(models.Model):
 		return self.name
 
 class Book(models.Model):
-    title = models.CharField(max_length=256)
-    author = models.CharField(max_length=64)
-    description = models.TextField(blank=False)
-    datetime = models.DateField()
-    country = models.ManyToManyField(Country)
-    languages = models.ManyToManyField(Language)
-    topics = models.ManyToManyField(Topic)
+    title = models.CharField(max_length=256, verbose_name="Titlu")
+    author = models.CharField(max_length=64, verbose_name="Autor")
+    description = models.TextField(blank=False, verbose_name="Detalii")
+    datetime = models.DateField(verbose_name="Data publicării")
+    country = models.ManyToManyField(Country, verbose_name="Țări")
+    languages = models.ManyToManyField(Language, verbose_name="Limbi")
+    topics = models.ManyToManyField(Topic, verbose_name="Categorii")
