@@ -2,15 +2,22 @@ from datetime import datetime
 
 from django.shortcuts import render
 
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django_tables2 import SingleTableView
-from .tables import BookTable
 
+from django_tables2.config import RequestConfig
+
+#
 from .models import (
     Topic,
     Language,
     Country,
     Book)
+
+from .tables import BookTable
+from .filters import BookFilter
+from .filters import BookFilterFormHelper
+
 
 # Create your views here.
 
@@ -51,3 +58,28 @@ class BookListView(SingleTableView):
     table_pagination = {
         "per_page": 4
     }
+
+
+def filtrare(request):
+    queryset = Book.objects.select_related().all()
+    f = BookFilter(request.GET, queryset=queryset)
+    table = BookTable(f.qs)
+    RequestConfig(request, paginate={'per_page': 4}).configure(table)
+    return render(request, 'dashboard/book_filter.html', {'table': table, 'filter': f})
+
+class BookTableView(TemplateView):
+    template_name = 'dashboard/book_filter.html'
+
+    def get_queryset(self, **kwargs):
+        return Book.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(BookTableView, self).get_context_data(**kwargs)
+        filter = BookFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = BookFilterFormHelper()
+        table = BookTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
