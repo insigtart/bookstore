@@ -9,9 +9,10 @@
 {% block content %}
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
 <style>
-    .colorare_partiala { color: #4a8578e5; }
+    .colorare_partiala {
+        color: #4a8578e5;
+    }
 </style>
 
 <div class="row">
@@ -19,34 +20,35 @@
 </div>
 
 <div class="row">
-    <div class="col-md">
-        <div class="card card-body" style="width: 60rem;">  
-                      
+    <div class="col-md-9">
+        <div class="card card-body">
+
             <h6><span class="colorare_partiala">ID în baza de date:</span> {{ book.id }}</h6>
             <h6><span class="colorare_partiala">Titlu:</span> {{ book.title }}</h6>
             <h6><span class="colorare_partiala">Autor:</span> {{ book.author }}</h6>
             <h6><span class="colorare_partiala">Data:</span> {{ book.datetime }}</h6>
-            <h6><span class="colorare_partiala">Țări:</span> 
+            <h6><span class="colorare_partiala">Status:</span> {{ book.status }}</h6>
+            <h6><span class="colorare_partiala">Țări:</span>
                 {% for country in book.country.all%}
-                    {% if country != book.country.last %}
-                        {{ country.name  }},
-                    {% endif %}
+                {% if country != book.country.last %}
+                {{ country.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.country.last.name }}.
             </h6>
-            <h6><span class="colorare_partiala">Limbi:</span> 
+            <h6><span class="colorare_partiala">Limbi:</span>
                 {% for language in book.languages.all%}
-                    {% if language != book.languages.last %}
-                        {{ language.name  }},
-                    {% endif %}
+                {% if language != book.languages.last %}
+                {{ language.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.languages.last.name }}.
             </h6>
-            <h6><span class="colorare_partiala">Categorii:</span> 
+            <h6><span class="colorare_partiala">Categorii:</span>
                 {% for topic in book.topics.all%}
-                    {% if topic != book.topics.last %}
-                        {{ topic.name  }},
-                    {% endif %}
+                {% if topic != book.topics.last %}
+                {{ topic.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.topics.last.name }}.
             </h6>
@@ -54,20 +56,45 @@
         </div>
     </div>
 
-    <div class="col-md">
-        <div class="card card-body">
-            <h6 style="text-align: center;">Auto</h6>
-            <div class="checkbox">
-                <label>
-                    <a href="" style="padding-left: 150%;">
-                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success"
-                            data-offstyle="danger">
-                    </a>
+    <div class="col-md-3">
+        <div class="card text-center" style="width: 10rem;">
+            <img class="card-img-top" src="{% static 'img_book.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <!-- Material checked -->
+                <!-- Rounded switch -->
+                <label class="switch">
+                    {% if book.status %}
+                    <input type="checkbox" id="togBtn" checked>
+                    {% else %}
+                    <input type="checkbox" id="togBtn">
+                    {% endif %}
+
+                    <div class="slider round">
+                        <span class="on">
+                            <input type="text" name="available" value="ON">ON
+                        </span>
+
+                        <span class="off">
+                            <input type="text" name="available" value="OFF">OFF
+                        </span>
+                    </div>
                 </label>
             </div>
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- Import Jquery Here-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#togBtn').change(function () {
+                $.post("/change_book_status/", {
+                    id: '{{book.id}}',
+                    status: this.checked,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                });
+            });
+        }); 
+    </script>
 
 </div>
 

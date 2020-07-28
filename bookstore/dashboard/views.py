@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django_tables2 import SingleTableView
 from .tables import BookTable
+from django.contrib import messages
 
 from .models import (
     Topic,
@@ -43,6 +44,16 @@ def book(request, pk_test):
     context = {'book': book}
     return render(request, 'dashboard/book_profile.html', context)
 
+def change_book_status(request):
+    book = Book.objects.get(id=request.POST['id'])
+    book.status = not book.status
+    book.save()
+    context = {'book': book}
+    messages.success(request, "Change status of book: done")
+    return render(request, 'dashboard/book_profile.html', context)
+
+
+
 
 class BookListView(SingleTableView):
     model = Book
@@ -51,3 +62,4 @@ class BookListView(SingleTableView):
     table_pagination = {
         "per_page": 4
     }
+
