@@ -1,12 +1,212 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block topbar-image-text %} Înapoi acasă {% endblock topbar-image-text %} {% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-{% block topbar-image-text %}
-Înapoi acasă
-{% endblock topbar-image-text %}
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://static.cartepedia.ro/image/207664/mandrie-si-prejudecata-4-produs_galerie_mare.jpg" alt="" />
+                    <div class="file btn btn-sm btn-primary">
+                        Schimbă imaginea
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{ book.title }}
+                    </h5>
+                    <h6>{{ book.autor }}
+                    </h6>
+                    <p class="proile-rating">RATING : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">DETALII</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">ISTORIC</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editează profilul" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>SUBIECTE</p>
+                    <a href="">a</a><br/>
+                    <a href="">b</a><br/>
+                    <a href="">c</a>
+                    <p>TIP ACȚIUNE</p>
+                    <a href="">a</a><br/>
+                    <a href="">b</a><br/>
+                    <a href="">c</a><br/>
+                    <a href="">d</a><br/>
+                    <a href="">e</a><br/>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>ID</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ book.id }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>TITLU</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ book.title }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>AUTOR</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ book.author }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>DATA</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ book.datetime }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>STATUS</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ book.status }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>ȚĂRI</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{% for country in book.country.all%} {% if country != book.country.last %} {{ country.name }}, {% endif %} {% endfor %} {{ book.country.last.name }}.</p>
+                            </div>
+                        </div>
 
-{% block content %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>LIMBI</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{% for language in book.languages.all%} {% if language != book.languages.last %} {{ language.name }}, {% endif %} {% endfor %} {{ book.languages.last.name }}.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>CATEGORII</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p> {% for topic in book.topics.all%} {% if topic != book.topics.last %} {{ topic.name }}, {% endif %} {% endfor %} {{ book.topics.last.name }}.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>DETALII</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p> {{ book.description }}.</p>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>LAITMOTIV</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>a</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>VAR1</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>a</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>VAR2</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>a</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>VAR3</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>a</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>VAR4</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>a</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>VAR5</label><br/>
+                                <p>a</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <style>
@@ -59,9 +259,10 @@
     <div class="col-md-3">
         <div class="card text-center" style="width: 10rem;">
             <img class="card-img-top" src="{% static 'img_book.png' %}" alt="Card image cap">
-            <div class="card-body">
-                <!-- Material checked -->
-                <!-- Rounded switch -->
+            <div class="card-body"> -->
+<!-- Material checked -->
+<!-- Rounded switch -->
+<!--
                 <label class="switch">
                     {% if book.status %}
                     <input type="checkbox" id="togBtn" checked>
@@ -83,7 +284,9 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- Import Jquery Here-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<!-- Import Jquery Here-->
+<!--
     <script type="text/javascript">
         $(document).ready(function () {
             $('#togBtn').change(function () {
@@ -108,9 +311,6 @@
     <div class="col-md">
         <div class="card card-body"></div>
     </div>
-</div>
-
-<hr>
+</div><hr>
 <a class="btn btn-outline-info  btn-sm btn-block" href="">Edit Book</a>
-<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Book</a>
-{% endblock content %}
+<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Book</a> -->
