@@ -28,3 +28,11 @@ class Book(models.Model):
     country = models.ManyToManyField(Country, verbose_name="Țări")
     languages = models.ManyToManyField(Language, verbose_name="Limbi")
     topics = models.ManyToManyField(Topic, verbose_name="Categorii")
+    tracking = models.BooleanField(default=False)
+
+class Notification(models.Model):
+	target = models.IntegerField()
+	name = models.CharField(max_length=32)
+	description = models.CharField(max_length=64)
+	datetime = models.DateField(auto_now_add=True)
+	active = models.BooleanField(default=True)

@@ -21,32 +21,32 @@
 <div class="row">
     <div class="col-md">
         <div class="card card-body" style="width: 60rem;">  
-                      
+
             <h6><span class="colorare_partiala">ID în baza de date:</span> {{ book.id }}</h6>
             <h6><span class="colorare_partiala">Titlu:</span> {{ book.title }}</h6>
             <h6><span class="colorare_partiala">Autor:</span> {{ book.author }}</h6>
             <h6><span class="colorare_partiala">Data:</span> {{ book.datetime }}</h6>
             <h6><span class="colorare_partiala">Țări:</span> 
                 {% for country in book.country.all%}
-                    {% if country != book.country.last %}
-                        {{ country.name  }},
-                    {% endif %}
+                {% if country != book.country.last %}
+                {{ country.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.country.last.name }}.
             </h6>
             <h6><span class="colorare_partiala">Limbi:</span> 
                 {% for language in book.languages.all%}
-                    {% if language != book.languages.last %}
-                        {{ language.name  }},
-                    {% endif %}
+                {% if language != book.languages.last %}
+                {{ language.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.languages.last.name }}.
             </h6>
             <h6><span class="colorare_partiala">Categorii:</span> 
                 {% for topic in book.topics.all%}
-                    {% if topic != book.topics.last %}
-                        {{ topic.name  }},
-                    {% endif %}
+                {% if topic != book.topics.last %}
+                {{ topic.name  }},
+                {% endif %}
                 {% endfor %}
                 {{ book.topics.last.name }}.
             </h6>
@@ -57,12 +57,13 @@
     <div class="col-md">
         <div class="card card-body">
             <h6 style="text-align: center;">Auto</h6>
-            <div class="checkbox">
+            <div class="checkbox" style="margin-left: 25%;">
                 <label>
-                    <a href="" style="padding-left: 150%;">
-                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success"
-                            data-offstyle="danger">
-                    </a>
+                    {% if book.tracking %}
+                        <input id="input-notification" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" checked>
+                    {% else %}
+                        <input id="input-notification" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                    {% endif %}
                 </label>
             </div>
         </div>
@@ -86,4 +87,29 @@
 <hr>
 <a class="btn btn-outline-info  btn-sm btn-block" href="">Edit Book</a>
 <a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Book</a>
+
+<script>
+    $('#input-notification').change( function(event) {
+        var args = window.location.pathname.split('/');
+        $.ajax({
+            url: "/update_notification_status",
+            type: "post",
+            data: {
+                id: args[args.length - 2],
+                value: this.checked,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+          },
+          success: function(response) {
+            console.log(response);
+          },
+          error: function(response) {
+            console.log(response);
+          },
+          complete: function(response) {
+
+          }
+      });
+    });
+</script>
+
 {% endblock content %}

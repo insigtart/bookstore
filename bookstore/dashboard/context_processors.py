@@ -2,7 +2,8 @@ from .models import (
 	Topic,
 	Language,
 	Country,
-	Book)
+	Book,
+	Notification)
 
 
 def details(request):
@@ -22,9 +23,13 @@ def details(request):
 	countries = Country.objects.all()
 	countries = [country.name for country in countries]
 
+	# create list of notifications
+	notifications = Notification.objects.all()
+
 	return {
 	    'booknames': books,
 	    'topics': topics,
 	    'languages': languages,
-	    'countries': countries
+	    'countries': countries,
+	    'notifications': notifications
 	}
