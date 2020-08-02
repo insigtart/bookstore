@@ -6,7 +6,8 @@
 
 
 {% block content %}
-    {% crispy filter.form filter.form.helper %}
+    {% crispy filter.form filter.form.helper %}    
+    <br>
     {% render_table table  %}
 {% endblock content %}
 

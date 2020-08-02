@@ -5,7 +5,7 @@ from .models import Book
 
 class BookTable(tables.Table):    
     select = TemplateColumn('<input type="checkbox" value="{{ record.pk }}" />', verbose_name=" ")
-    view = TemplateColumn(template_code='<a class="btn btn-sm btn-info" href="{% url "book" record.id %}">Fișă</a>', verbose_name=" ")
+    view = TemplateColumn(template_code='<a class="btn btn-sm btn-info" href="{% url "dashboard:book" record.id %}">Fișă</a>', verbose_name=" ")
     
     class Meta:
         model = Book

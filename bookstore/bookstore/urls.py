@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
 urlpatterns = [
-	path('', include('dashboard.urls')),
+	path('', include('dashboard.urls', namespace='dashboard')),
     path('admin/', admin.site.urls),
 ]
