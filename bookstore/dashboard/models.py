@@ -1,24 +1,29 @@
 from django.db import models
 
 # Create your models here.
-class Topic(models.Model):
-	name = models.CharField(max_length=256, unique=True)
-	description = models.TextField(blank=True)
 
-	def __str__(self):
-		return self.name
+
+class Topic(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Country(models.Model):
-	name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=256, unique=True)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+
 
 class Language(models.Model):
-	name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=256, unique=True)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+
 
 class Book(models.Model):
     title = models.CharField(max_length=256, verbose_name="Titlu")
@@ -28,7 +33,8 @@ class Book(models.Model):
     country = models.ManyToManyField(Country, verbose_name="Țări")
     languages = models.ManyToManyField(Language, verbose_name="Limbi")
     topics = models.ManyToManyField(Topic, verbose_name="Categorii")
-    tracking = models.BooleanField(default=False)
+    tracking = models.BooleanField(verbose_name="Status carte", null=True, default=False)
+
 
 class Notification(models.Model):
 	target = models.IntegerField()
@@ -36,3 +42,4 @@ class Notification(models.Model):
 	description = models.CharField(max_length=64)
 	datetime = models.DateField(auto_now_add=True)
 	active = models.BooleanField(default=True)
+
