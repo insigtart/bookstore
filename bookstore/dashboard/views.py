@@ -53,7 +53,7 @@ def update_notification_status(request):
     book.save()
 
     # change the intervl value if needed
-    interval = IntervalSchedule.objects.get(every=30, period=IntervalSchedule.MINUTES)
+    interval = IntervalSchedule.objects.get_or_create(every=30, period=IntervalSchedule.MINUTES)
 
     # update notification task
     notificationTask, _ = PeriodicTask.objects.get_or_create(
