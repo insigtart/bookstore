@@ -53,12 +53,15 @@ def update_notification_status(request):
     book.save()
 
     # change the intervl value if needed
-    interval = IntervalSchedule.objects.get_or_create(every=30, period=IntervalSchedule.MINUTES)
+    interval, _ = IntervalSchedule.objects.get_or_create(every=30, period=IntervalSchedule.MINUTES)
 
-    # update notification task
-    notificationTask, _ = PeriodicTask.objects.get_or_create(
-        name='book_' + request.POST['id'],
-        task='dashboard.tasks.send_notification')
+    # create or update notification task
+    if not PeriodicTask.objects.filter(name='book_' + request.POST['id']).exists():
+        notificationTask = PeriodicTask(
+            name='book_' + request.POST['id'],
+            task='dashboard.tasks.send_notification')
+    else:
+        notificationTask = PeriodicTask.objects.get(name='book_' + request.POST['id'])
 
     notificationTask.kwargs = json.dumps({'id': request.POST['id']})
     notificationTask.interval = interval
