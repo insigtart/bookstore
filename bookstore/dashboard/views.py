@@ -1,11 +1,15 @@
+import json
 from datetime import datetime
+from .tables import BookTable
 
 from django.shortcuts import render
-
+from django.http import JsonResponse
 from django.views.generic import ListView
 from django_tables2 import SingleTableView
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
 from .tables import BookTable
 from django.contrib import messages
+
 
 from .models import (
     Topic,
@@ -44,15 +48,31 @@ def book(request, pk_test):
     context = {'book': book}
     return render(request, 'dashboard/book_profile.html', context)
 
-def change_book_status(request):
+
+def update_notification_status(request):
+    # update book tracking status
+    trackingStatus = request.POST['value'] == 'true'
     book = Book.objects.get(id=request.POST['id'])
-    book.status = not book.status
+    book.tracking = trackingStatus
     book.save()
-    context = {'book': book}
-    messages.success(request, "Change status of book: done")
-    return render(request, 'dashboard/book_profile.html', context)
 
+    # change the intervl value if needed
+    interval, _ = IntervalSchedule.objects.get_or_create(every=30, period=IntervalSchedule.MINUTES)
 
+    # create or update notification task
+    if not PeriodicTask.objects.filter(name='book_' + request.POST['id']).exists():
+        notificationTask = PeriodicTask(
+            name='book_' + request.POST['id'],
+            task='dashboard.tasks.send_notification')
+    else:
+        notificationTask = PeriodicTask.objects.get(name='book_' + request.POST['id'])
+
+    notificationTask.kwargs = json.dumps({'id': request.POST['id']})
+    notificationTask.interval = interval
+    notificationTask.enabled = trackingStatus
+    notificationTask.save()
+
+    return JsonResponse({'success': True})
 
 
 class BookListView(SingleTableView):

@@ -30,8 +30,16 @@ class Book(models.Model):
     author = models.CharField(max_length=64, verbose_name="Autor")
     description = models.TextField(blank=False, verbose_name="Detalii")
     datetime = models.DateField(verbose_name="Data publicării")
-    status = models.BooleanField(
-        verbose_name="Status carte", null=True, default=False)
     country = models.ManyToManyField(Country, verbose_name="Țări")
     languages = models.ManyToManyField(Language, verbose_name="Limbi")
     topics = models.ManyToManyField(Topic, verbose_name="Categorii")
+    tracking = models.BooleanField(verbose_name="Status carte", null=True, default=False)
+
+
+class Notification(models.Model):
+	target = models.IntegerField()
+	name = models.CharField(max_length=32)
+	description = models.CharField(max_length=64)
+	datetime = models.DateField(auto_now_add=True)
+	active = models.BooleanField(default=True)
+

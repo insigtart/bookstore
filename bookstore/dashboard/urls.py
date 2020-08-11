@@ -11,6 +11,5 @@ urlpatterns = [
     path('pagina_hello/', views.hello, name='pagina_hello'),
     path('listare_carti/', BookListView.as_view(), name='book_list'),
     path('book/<str:pk_test>/', views.book, name='book'),
-    path('change_book_status/', views.change_book_status,
-         name='change_book_status'),
+    path('update_notification_status', views.update_notification_status, name='update_notification_status'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

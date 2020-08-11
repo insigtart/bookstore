@@ -22,12 +22,11 @@
 <div class="row">
     <div class="col-md-9">
         <div class="card card-body">
-
             <h6><span class="colorare_partiala">ID în baza de date:</span> {{ book.id }}</h6>
             <h6><span class="colorare_partiala">Titlu:</span> {{ book.title }}</h6>
             <h6><span class="colorare_partiala">Autor:</span> {{ book.author }}</h6>
             <h6><span class="colorare_partiala">Data:</span> {{ book.datetime }}</h6>
-            <h6><span class="colorare_partiala">Status:</span> {{ book.status }}</h6>
+            <h6><span class="colorare_partiala">Status:</span> {{ book.tracking }}</h6>
             <h6><span class="colorare_partiala">Țări:</span>
                 {% for country in book.country.all%}
                 {% if country != book.country.last %}
@@ -63,10 +62,10 @@
                 <!-- Material checked -->
                 <!-- Rounded switch -->
                 <label class="switch">
-                    {% if book.status %}
-                    <input type="checkbox" id="togBtn" checked>
+                    {% if book.tracking %}
+                    <input type="checkbox" id="input-notification" checked>
                     {% else %}
-                    <input type="checkbox" id="togBtn">
+                    <input type="checkbox" id="input-notification">
                     {% endif %}
 
                     <div class="slider round">
@@ -83,17 +82,27 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- Import Jquery Here-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#togBtn').change(function () {
-                $.post("/change_book_status/", {
+    <script>
+        $('#input-notification').change( function(event) {
+            $.ajax({
+                url: "/update_notification_status",
+                type: "post",
+                data: {
                     id: '{{book.id}}',
-                    status: this.checked,
+                    value: this.checked,
                     csrfmiddlewaretoken: '{{ csrf_token }}'
-                });
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(response) {
+                    console.log(response);
+                },
+                complete: function(response) {
+
+                }
             });
-        }); 
+        });
     </script>
 
 </div>
@@ -113,4 +122,5 @@
 <hr>
 <a class="btn btn-outline-info  btn-sm btn-block" href="">Edit Book</a>
 <a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Book</a>
+
 {% endblock content %}
