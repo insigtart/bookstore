@@ -4,13 +4,19 @@ from django.conf import settings
 
 
 from . import views
-from dashboard.views import BookListView
 
 urlpatterns = [
-    path('', views.hello, name='hello'),
-    path('pagina_hello/', views.hello, name='pagina_hello'),
-    path('listare_carti/', BookListView.as_view(), name='book_list'),
-    path('book/<str:pk_test>/', views.book, name='book'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('books/', views.BookListView.as_view(), name='books'),
+    path('books/create/', views.BookAddView.as_view(), name='create_book'),
+    path('books/read/<int:pk>/', views.BookDetailView.as_view(), name='read_book'),
+    path('books/update/<int:pk>/',
+         views.BookUpdateView.as_view(), name='update_book'),
+    path('books/delete/<int:pk>/',
+         views.BookDeleteView.as_view(), name='delete_book'),
     path('change_book_status/', views.change_book_status,
          name='change_book_status'),
+    path('update_notification_status', views.update_notification_status,
+         name='update_notification_status'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

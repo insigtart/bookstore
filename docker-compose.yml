@@ -1,21 +1,39 @@
 version: "3"
 
 services: 
+
+    db:
+        image: postgres:12.0-alpine
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=bookstore_db
+            - POSTGRES_PASSWORD=bookstore_db
+            - POSTGRES_DB=bookstore_dev
+            
+    redis:
+        image: "redis:alpine"
+
     web:
         build: 
             context: .
         ports: 
             - "8000:8000"
+        env_file:
+            - ./.env.dev
         volumes: 
             - ./bookstore:/bookstore
         command: >
-            sh -c "python manage.py runserver 0.0.0.0:8000"
-        depends_on: 
+            sh -c "sleep 60
+            && python manage.py migrate
+            && sleep 10
+            && python manage.py loaddata dashboard_fixture_test_db.json
+            && sleep 10
+            && python manage.py runserver 0.0.0.0:8000"
+        depends_on:
+            - db 
             - redis
     
-    redis:
-        image: "redis:alpine"
-
     celery:
         build: .
         command: >
@@ -24,6 +42,8 @@ services:
             - ./bookstore:/bookstore
         depends_on: 
             - redis
+            - db
+            - web
 
     celery-beat:
         build: .
@@ -33,6 +53,8 @@ services:
             - ./bookstore:/bookstore
         depends_on: 
             - redis
+            - db
+            - web
 
-
-
+volumes:
+    postgres_data:

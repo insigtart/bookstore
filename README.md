@@ -1,4 +1,4 @@
-# bookstore
+# bookstore - branch DGA
 Create a simple bookstore for training 
 
 # Steps for run 
@@ -13,15 +13,18 @@ Create a simple bookstore for training
      - c.2: docker-compose up
 
 
+3. Stop 
+     - c.1: CTRL+C (stop all up containers)
+     - c.2: docker-compose down -v 
 
 # About 
 
-Currently the application is composed of 3 services:
+Currently the application is composed of 4 services:
 
 1. Web Server: django
 2. In-memory-db: redis
 3. Async. task: celery
-4. Recommendation: to connect postgresql bd as another service
+4. Database: postgresql
 
 From now on everyone will have to work this way.
 

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+
+{% block topbar-image-text %}
+Înapoi acasă
+{% endblock topbar-image-text %}
+
+
+{% block extrastyle %}
+
+{% endblock extrastyle %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+        {% for error in form.non_field_errors %}
+        {{ error }}
+        {% endfor %}
+    </div>
+
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {% if field == form.datetime %}
+        {% render_field field class="form-control form_datetime" placeholder=field.label %}
+        {% else %}
+        {% render_field field class="form-control" placeholder=field.label %}
+        {% endif %}
+        <div class="{% if field.errors %} invalid{% endif %}">
+            {% for error in field.errors %}
+            <p class="help-block">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <hr />
+
+    <button type="submit" class="btn btn-outline-success  btn-sm btn-block">Create book</button>
+</form>
+
+
+
+<br />
+
+
+
+{% endblock content %}
+
+{% block extrascripts %}
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        format: 'mm/dd/yyyy',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 3,
+        minView: 2,
+        maxView: 2,
+        forceParse: 0,
+        pickerPosition: 'bottom-left'
+    });
+</script>
+
+<script type="text/javascript">
+    /*An array containing all the books names in app:*/
+    var books = {{ booknames| safe}};
+    var languages = {{ languages| safe}};
+    var countries = {{ countries| safe}};
+</script>
+
+{% endblock extrascripts %}

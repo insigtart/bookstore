@@ -1,0 +1,19 @@
+{% load static %}
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" style="color: rgb(42, 212, 51)">
+        {% block topbar-image-text %}
+        <img src="{% static 'bookstore_icon.png' %}" width="25" height="25">
+        BOOKSTORE
+        {% endblock topbar-image-text %}
+    </a>
+    <form id="search-book-form" class="w-100">
+        <input id="search-book" name="search-book" class="form-control form-control-dark" type="text"
+            placeholder="Search" aria-label="Search">
+    </form>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link">Sign Out</a>
+        </li>
+    </ul>
+</nav>

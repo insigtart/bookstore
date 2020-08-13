@@ -1,30 +1,34 @@
 from .models import (
-	Topic,
-	Language,
-	Country,
-	Book)
+    Topic,
+    Language,
+    Country,
+    Book,
+    Notification)
 
 
 def details(request):
-	# create list of books
-	books = Book.objects.all()
-	books = [book.title for book in books]
+    # create list of books
+    books = Book.objects.all()
+    books = [book.title for book in books]
 
-	# create list of topic names
-	topics = Topic.objects.all()
-	topics = [topic.name for topic in topics]
+    # create list of topic names
+    topics = Topic.objects.all()
+    topics = [topic.name for topic in topics]
 
-	# create list of lanuages
-	languages = Language.objects.all()
-	languages = [language.name for language in languages]
-	
-	# create list of countries
-	countries = Country.objects.all()
-	countries = [country.name for country in countries]
+    # create list of lanuages
+    languages = Language.objects.all()
+    languages = [language.name for language in languages]
 
-	return {
-	    'booknames': books,
-	    'topics': topics,
-	    'languages': languages,
-	    'countries': countries
-	}
+    # create list of countries
+    countries = Country.objects.all()
+    countries = [country.name for country in countries]
+    notifications = Notification.objects.all()
+
+    return {
+        'booknames': books,
+        'topics': topics,
+        'languages': languages,
+        'countries': countries,
+        'notifications': notifications
+
+    }
